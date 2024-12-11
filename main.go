@@ -39,6 +39,8 @@ func main() {
 			return
 		}
 
+		log.Println(messageRequest.Text)
+		log.Println(messageRequest.PhoneNumber)
 		phoneWithCode := "993" + string(messageRequest.PhoneNumber)
 		command := fmt.Sprintf("echo gerekli1603 | sudo -S gammu -c ~/.gammurc sendsms TEXT %s -unicode -len %s -text \"%s\"", phoneWithCode, getLengthOption(messageRequest.Text), messageRequest.Text)
 
@@ -65,7 +67,7 @@ func main() {
 		}
 	})
 
-	r.Run(":8081")
+	r.Run(":8090")
 }
 
 func getLengthOption(message string) string {
